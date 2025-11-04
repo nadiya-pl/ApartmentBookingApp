@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingAPI", "BookingAPI\BookingAPI.csproj", "{54D2332B-22AB-4AF6-9493-041732131D8D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontend", "Frontend\Frontend.csproj", "{79988181-8F6F-4B29-995E-EA7B71A2ED61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthAPI", "AuthApi\AuthAPI.csproj", "{DFDB053D-0FDF-4605-80CA-1EA86EB10F75}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54D2332B-22AB-4AF6-9493-041732131D8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54D2332B-22AB-4AF6-9493-041732131D8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54D2332B-22AB-4AF6-9493-041732131D8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54D2332B-22AB-4AF6-9493-041732131D8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79988181-8F6F-4B29-995E-EA7B71A2ED61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79988181-8F6F-4B29-995E-EA7B71A2ED61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79988181-8F6F-4B29-995E-EA7B71A2ED61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79988181-8F6F-4B29-995E-EA7B71A2ED61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFDB053D-0FDF-4605-80CA-1EA86EB10F75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFDB053D-0FDF-4605-80CA-1EA86EB10F75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFDB053D-0FDF-4605-80CA-1EA86EB10F75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFDB053D-0FDF-4605-80CA-1EA86EB10F75}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D77788D-FC1D-4F1C-9E31-3C245C5234A9}
+	EndGlobalSection
+EndGlobal

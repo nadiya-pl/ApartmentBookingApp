@@ -1,0 +1,112 @@
+﻿@using System.Security.Claims
+
+@model PropertyDto
+
+@{
+    ViewData["Title"] = "Property Details";
+}
+
+<section class="room-details-section spad mt-5">
+    <div class="container">
+        <div class="row">
+            <!-- Left: image + description -->
+            <div class="col-lg-7">
+                <div class="room-details-item">
+                    <img src="@Model.ImageUrl" alt="@Model.Title" class="img-fluid rounded shadow-sm mb-3" />
+
+                    <div class="rd-text">
+                        <div class="rd-title d-flex justify-content-between align-items-center">
+                            <h3>@Model.Title</h3>
+                            <div class="rdt-right">
+                                <div class="rating">
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star-half_alt"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h2>@Model.PricePerNight$<span> / Pernight</span></h2>
+
+                        <p class="f-para mt-4">
+                            Welcome to our beautiful rental property in <strong>@Model.City, @Model.Country</strong>. Whether you're traveling alone or with family, this place offers everything you need: comfort, functionality, and a great location.
+                        </p>
+                        <p>
+                            @Model.Description
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+      
+            <div class="col-lg-5">
+                <div class="room-booking p-4 rounded shadow-sm bg-light">
+                    <h3 class="mb-4">Your Reservation</h3>
+
+                    <form asp-action="Create" method="post" class="room-booking-form">
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger mb-3" })
+                        <input type="hidden" name="UserId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
+                        <input type="hidden" name="PropertyId" value="@Model.Id" />
+
+                        <div class="check-date mb-3">
+                            <label for="StartDate">Check In:</label>
+                            <input type="text" name="StartDate" class="date-input form-control" required />
+                            <i class="icon_calendar"></i>
+                        </div>
+
+                        <div class="check-date mb-3">
+                            <label for="EndDate">Check Out:</label>
+                            <input type="text" name="EndDate" class="date-input form-control" required />
+                            <i class="icon_calendar"></i>
+                        </div>
+
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <p class="text-muted mb-4 login-hint">
+                                Please <a href="/Account/Login?returnUrl=@Context.Request.Path" class="login-link">log in</a> to book this property.
+                            </p>
+                        }
+
+                        <button type="submit" class="bk-btn w-100 mb-2 @(User.Identity.IsAuthenticated ? "" : "disabled-btn")"
+                        @(User.Identity.IsAuthenticated ? "" : "disabled title=\"Please log in to book this property\"")>
+                            Booking Now
+                        </button>
+
+                       
+                      
+                    </form>
+
+                    <table class="booking-details">
+                        <tbody>
+                            <tr>
+                                <td class="r-o">Size:</td>
+                                <td>@Model.Sqm m²</td>
+                            </tr>
+                            <tr>
+                                <td class="r-o">Capacity:</td>
+                                <td>Max person @Model.MaxGuests</td>
+                            </tr>
+                            <tr>
+                                <td class="r-o">Bed:</td>
+                                <td>@Model.Bedrooms bed(s)</td>
+                            </tr>
+                            <tr>
+                                <td class="r-o">Services:</td>
+                                <td>
+                                    @(Model.HasWifi ? "Wi-Fi, " : "")
+                                    @(Model.HasAirConditioning ? "Air Conditioning, " : "")
+                                    @(Model.HasKitchen ? "Kitchen, " : "")
+                                    @(Model.HasWashingMachine ? "Washing Machine, " : "")
+                                    @(Model.HasParking ? "Parking" : "")
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

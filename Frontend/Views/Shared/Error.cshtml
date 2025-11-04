@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="container text-center mt-5" style="min-height:80vh;">
+    <h1 class="text-danger fw-bold">Error</h1>
+    <h4 class="text-secondary mb-4">An error occurred while processing your request.</h4>
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-warning shadow-sm d-inline-block px-4 py-3">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <div class="mt-4">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">
+            Back to Home
+        </a>
+    </div>
+</div>

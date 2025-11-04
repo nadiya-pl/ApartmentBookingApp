@@ -1,0 +1,129 @@
+﻿@using System.Security.Claims
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Apartment Booking demo project built with ASP.NET Core MVC.">
+    <meta name="keywords" content="Apartment Booking, asp.net core, demo project, razor pages">
+    <title>@ViewData["Title"] - Apartment Booking</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/elegant-icons.css" />
+    <link rel="stylesheet" href="~/css/flaticon.css" />
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/css/nice-select.css" />
+    <link rel="stylesheet" href="~/css/jquery-ui.min.css" />
+    <link rel="stylesheet" href="~/css/magnific-popup.css" />
+    <link rel="stylesheet" href="~/css/slicknav.min.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+   
+</head>
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header-section header-normal">
+        <div class="menu-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="logo">
+                            <a href="/">
+                                <img src="~/img/logo.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="nav-menu">
+                            <nav class="mainmenu">
+                                <ul class="main-menu d-flex align-items-center gap-4">
+                                    <li>
+                                        <a asp-controller="Home" asp-action="Index">Home</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Properties" asp-action="Index">Properties</a>
+                                    </li>
+
+                                    @if (User.Identity != null && User.Identity.IsAuthenticated)
+                                    {
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            <li class="position-relative" style="margin-left: 10px;">
+                                                <a href="#" class="d-flex align-items-center" style="gap: 6px;">
+                                                    <span>Admin</span>
+                                                    <i class="fa fa-caret-down" style="font-size: 0.9rem; opacity: 0.8;"></i>
+                                                </a>
+                                                <ul class="dropdown position-absolute">
+                                                    <li><a asp-controller="Admin" asp-action="Properties">Properties</a></li>
+                                                    <li><a asp-controller="Admin" asp-action="Bookings">Bookings</a></li>
+                                                </ul>
+                                            </li>
+                                        }
+
+                                        <li style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <span style="font-weight: 600; color: #212529;">Hello, @User.FindFirst(ClaimTypes.GivenName)?.Value</span>
+                                            <a asp-controller="Account" asp-action="Logout" title="Logout" style="color: #212529;">
+                                                <i class="fa fa-sign-out-alt"></i>
+                                            </a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a asp-controller="Account" asp-action="Login">Login</a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="Account" asp-action="Register">Register</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="footer-text">
+                        <p>&copy; @DateTime.Now.Year All rights reserved | Apartment Booking Demo Project</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> <!-- ДОЛЖЕН быть до bootstrap.min.js -->
+    <script src="~/js/bootstrap.min.js"></script>
+
+    <script src="~/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/jquery-ui.min.js"></script>
+    <script src="~/js/jquery.nice-select.min.js"></script>
+    <script src="~/js/jquery.slicknav.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/main.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿@model BookingDto
+
+<section class="room-details-section spad mt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="room-booking text-center p-5" style="background-color: #f8f9fa;">
+                    <h3 class="mb-4">Thank you for your booking!</h3>
+
+                    <table class="mx-auto mb-4">
+                        <tbody>
+                            <tr>
+                                <td class="r-o">Check-in:</td>
+                                <td>@Model.StartDate.ToString("dd MMM yyyy")</td>
+                            </tr>
+                            <tr>
+                                <td class="r-o">Check-out:</td>
+                                <td>@Model.EndDate.ToString("dd MMM yyyy")</td>
+                            </tr>
+                            <tr>
+                                <td class="r-o">Total Price:</td>
+                                <td>$@Model.TotalPrice</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <a asp-controller="Properties" asp-action="Index" class="bk-btn d-inline-block mt-2">Back to Properties</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
