@@ -156,4 +156,3 @@ All new registered users automatically receive the **Guest** role.
 - Clean, modular, and maintainable architecture  
 
 
-📫 [LinkedIn](https://www.linkedin.com/in/nadiya-pl) • [GitHub](https://github.com/nadiya-pl)
